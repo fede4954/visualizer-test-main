@@ -1,6 +1,4 @@
-import React from 'react'
-
-const FirstLayerSelector = (props) => {
+const FloorSelector = (props) => {
     const { materials, setFloor } = props
     const layers = materials[0].materials
     console.log(layers)
@@ -16,4 +14,4 @@ const FirstLayerSelector = (props) => {
     </>
 }
 
-export default FirstLayerSelector
+export default FloorSelector
