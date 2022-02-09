@@ -1,11 +1,13 @@
 import db from '../firebase/config'
 import { collection, getDocs } from 'firebase/firestore/lite'
 import { useState, useEffect } from 'react'
+import FloorSelector from '../components/FloorSelector'
 
 
 const Home = () => {
   const [points, setPoints] = useState('')
   const [materials, setMaterials] = useState('')
+  const [floor, setFloor] = useState('')
   const [loading, setLoading] = useState(true)
 
 
@@ -31,17 +33,26 @@ const Home = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/porcelanosa-partners-spaces.appspot.com/o/projects%2FdorptVQTHsbkYC60NSlt%2Fscenes%2F1567170849457-base?alt=media&token=cf8bcee2-bf89-4fd9-8bfd-9d4462348844" 
-          alt="Base image"
-          className="absolute top-0 left-0"
-        />
+      {!loading && <FloorSelector
+        materials={materials}
+        setFloor={setFloor}
+      />}
 
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/porcelanosa-partners-spaces.appspot.com/o/materials%2F1563187566938%2FdorptVQTHsbkYC60NSlt-1567170849457-mTrveExUlJpsEInPt1KX?alt=media&token=aca48ffd-c464-4936-b85c-7249bbb64ea9" 
-          alt="Base image"
-          className="absolute top-0 left-0 z-50"
-        />
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/porcelanosa-partners-spaces.appspot.com/o/projects%2FdorptVQTHsbkYC60NSlt%2Fscenes%2F1567170849457-base?alt=media&token=cf8bcee2-bf89-4fd9-8bfd-9d4462348844"
+        alt="Base image"
+        width="500px"
+        height="750px"
+        className="absolute top-0 left-0"
+      />
+
+      {floor && <img
+        src={floor}
+        alt="Base image"
+        width="500px"
+        height="750px"
+        className="absolute top-0 left-0 z-50"
+      />}
     </div>
   )
 }
