@@ -42,7 +42,8 @@ const Home = () => {
   }, [])
 
 
-  return <div className="bg-image min-h-screen flex flex-col justify-center items-end z-40">
+  return <div className="container bg-image">
+    <div className="min-h-screen flex flex-col justify-center items-end backdrop-blur-sm">
       {!loading && <>
         {floorSelector && <Selector
           materials={materials[0].materials}
@@ -89,6 +90,7 @@ const Home = () => {
           </>}
         </div>
       </>}
+    </div>
   </div>
 }
 
