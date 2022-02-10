@@ -15,14 +15,14 @@ const Home = () => {
   const [loading, setLoading] = useState(true)
 
 
-  const getData = async (colName) => {
-    const col = collection(db, colName)
+  const getMaterials = async () => {
+    const col = collection(db, 'materials')
     const snapshot = await getDocs(col)
     return snapshot.docs.map((doc) => doc.data())
   }
 
   const checkMenus = () => {
-    if(!touch){
+    if (!touch) {
       setTouch(true)
       setFloorMenu(false)
       setKitchenMenu(false)
@@ -31,18 +31,18 @@ const Home = () => {
 
 
   useEffect(() => {
-    const getAllData = async () => {
-      const mats = await getData('materials')
+    const setData = async () => {
+      const mats = await getMaterials()
       setMaterials(mats)
       setLoading(false)
     }
 
-    getAllData()
+    setData()
   }, [])
 
 
   return <>
-    {!loading && <div className="relative h-screen w-screen">
+    {!loading && <div className="relative h-screen w-screen bg-slate-300">
       <img
         src="https://firebasestorage.googleapis.com/v0/b/porcelanosa-partners-spaces.appspot.com/o/projects%2FdorptVQTHsbkYC60NSlt%2Fscenes%2F1567170849457-base?alt=media&token=cf8bcee2-bf89-4fd9-8bfd-9d4462348844"
         alt="Base image"

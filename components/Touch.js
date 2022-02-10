@@ -11,7 +11,7 @@ const Touch = (props) => {
     >
         <img
             src="fingerprint.png"
-            className="w-[30px] md:w-[50px]"
+            className="w-[30px] md:w-[50px] drop-shadow-lg hover:opacity-50"
         />
     </button>
 }
