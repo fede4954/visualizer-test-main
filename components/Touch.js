@@ -1,9 +1,12 @@
 const Touch = (props) => {
-    const { menu, setMenu, position } = props
+    const { menu, setMenu, position, setTouch } = props
 
     return <button
         type="button"
-        onClick={() => setMenu(!menu)}
+        onClick={() =>{
+            setMenu(!menu)
+            setTouch(false)
+        }}
         className={position}
     >
         <img

@@ -11,6 +11,7 @@ const Home = () => {
   const [kitchen, setKitchen] = useState('')
   const [floorMenu, setFloorMenu] = useState(false)
   const [kitchenMenu, setKitchenMenu] = useState(false)
+  const [touch, setTouch] = useState(true)
   const [loading, setLoading] = useState(true)
 
 
@@ -32,7 +33,13 @@ const Home = () => {
   }, [])
 
 
-  return <div>
+  return <div onClick={() => {
+    if(!touch){
+      setTouch(true)
+      setFloorMenu(false)
+      setKitchenMenu(false)
+    }
+  }}>
     {!loading && <div className="relative h-screen w-screen">
       <img
         src="https://firebasestorage.googleapis.com/v0/b/porcelanosa-partners-spaces.appspot.com/o/projects%2FdorptVQTHsbkYC60NSlt%2Fscenes%2F1567170849457-base?alt=media&token=cf8bcee2-bf89-4fd9-8bfd-9d4462348844"
@@ -52,22 +59,24 @@ const Home = () => {
         className="fixed top-0 left-0 w-full h-full object-contain"
       />}
 
-      <Touch
+      {touch && <Touch
         menu={floorMenu}
         setMenu={setFloorMenu}
         position={"absolute left-[25%] bottom-[35%] md:bottom-[27.5%] lg:left-[35%] lg:bottom-[5%]"}
-      />
+        setTouch={setTouch}
+      />}
 
       {floorMenu && <Selector
         materials={materials[0].materials}
         setMaterial={setFloor}
       />}
 
-      <Touch
+      {touch && <Touch
         menu={kitchenMenu}
         setMenu={setKitchenMenu}
         position={"absolute left-[75%] bottom-[55%] lg:left-[70%] lg:bottom-[60%]"}
-      />
+        setTouch={setTouch}
+      />}
 
       {kitchenMenu && <Selector
         materials={materials[1].materials}
