@@ -21,6 +21,14 @@ const Home = () => {
     return snapshot.docs.map((doc) => doc.data())
   }
 
+  const checkMenus = () => {
+    if(!touch){
+      setTouch(true)
+      setFloorMenu(false)
+      setKitchenMenu(false)
+    }
+  }
+
 
   useEffect(() => {
     const getAllData = async () => {
@@ -33,30 +41,27 @@ const Home = () => {
   }, [])
 
 
-  return <div onClick={() => {
-    if(!touch){
-      setTouch(true)
-      setFloorMenu(false)
-      setKitchenMenu(false)
-    }
-  }}>
+  return <>
     {!loading && <div className="relative h-screen w-screen">
       <img
         src="https://firebasestorage.googleapis.com/v0/b/porcelanosa-partners-spaces.appspot.com/o/projects%2FdorptVQTHsbkYC60NSlt%2Fscenes%2F1567170849457-base?alt=media&token=cf8bcee2-bf89-4fd9-8bfd-9d4462348844"
         alt="Base image"
         className="fixed top-0 left-0 w-full h-full object-contain"
+        onClick={() => checkMenus()}
       />
 
       {floor && <img
         src={floor}
         alt="Floor"
         className="fixed top-0 left-0 w-full h-full object-contain"
+        onClick={() => checkMenus()}
       />}
 
       {kitchen && <img
         src={kitchen}
         alt="Kitchen"
         className="fixed top-0 left-0 w-full h-full object-contain"
+        onClick={() => checkMenus()}
       />}
 
       {touch && <Touch
@@ -83,7 +88,7 @@ const Home = () => {
         setMaterial={setKitchen}
       />}
     </div>}
-  </div>
+  </>
 }
 
 export default Home
