@@ -42,8 +42,7 @@ const Home = () => {
   }, [])
 
 
-  return <div>
-    <div className="min-h-screen flex flex-col justify-center items-end z-20">
+  return <div className="bg-image min-h-screen flex flex-col justify-center items-end z-40">
       {!loading && <>
         {floorSelector && <Selector
           materials={materials[0].materials}
@@ -73,23 +72,23 @@ const Home = () => {
             checkMenus={checkMenus}
           />}
 
-          {touch && <Touch
-            menu={floorSelector}
-            setMenu={setFloorSelector}
-            position={"absolute left-[25%] bottom-[35%] md:bottom-[27.5%] lg:left-[35%] lg:bottom-[5%]"}
-            setTouch={setTouch}
-          />}
+          {touch && <>
+            <Touch
+              menu={floorSelector}
+              setMenu={setFloorSelector}
+              position={"absolute left-[25%] bottom-[35%] md:bottom-[27.5%] lg:left-[35%] lg:bottom-[5%]"}
+              setTouch={setTouch}
+            />
 
-
-          {touch && <Touch
-            menu={kitchenSelector}
-            setMenu={setKitchenSelector}
-            position={"absolute left-[75%] bottom-[55%] lg:left-[70%] lg:bottom-[60%]"}
-            setTouch={setTouch}
-          />}
+            <Touch
+              menu={kitchenSelector}
+              setMenu={setKitchenSelector}
+              position={"absolute left-[75%] bottom-[55%] lg:left-[70%] lg:bottom-[60%]"}
+              setTouch={setTouch}
+            />
+          </>}
         </div>
       </>}
-    </div>
   </div>
 }
 
