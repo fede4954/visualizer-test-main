@@ -42,7 +42,7 @@ const Home = () => {
   }, [])
 
 
-  return <div className="container bg-image">
+  return <div className="bg-image">
     <div className="min-h-screen flex flex-col justify-center items-end backdrop-blur-sm">
       {!loading && <>
         {floorSelector && <Selector
