@@ -12,6 +12,7 @@ const Layer = (props) => {
             alt={alt}
             layout="fill"
             objectFit="contain"
+            priority
         />
     </div>
 }
