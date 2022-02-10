@@ -46,9 +46,16 @@ const Home = () => {
         className="fixed top-0 left-0 w-full h-full object-contain"
       />}
 
+      {kitchen && <img
+        src={kitchen}
+        alt="Kitchen"
+        className="fixed top-0 left-0 w-full h-full object-contain"
+      />}
+
       <Touch
         menu={floorMenu}
         setMenu={setFloorMenu}
+        position={"absolute left-[25%] bottom-[35%] md:bottom-[27.5%] lg:left-[35%] lg:bottom-[5%]"}
       />
 
       {floorMenu && <Selector
@@ -56,26 +63,21 @@ const Home = () => {
         setMaterial={setFloor}
       />}
 
+      <Touch
+        menu={kitchenMenu}
+        setMenu={setKitchenMenu}
+        position={"absolute left-[75%] bottom-[55%] lg:left-[70%] lg:bottom-[60%]"}
+      />
 
+      {kitchenMenu && <Selector
+        materials={materials[1].materials}
+        setMaterial={setKitchen}
+      />}
     </div>}
   </div>
 }
 
 export default Home
 
-{/* <Touch
-  menu={kitchenMenu}
-  setMenu={setKitchenMenu}
-/>
 
-{kitchenMenu && <Selector
-  materials={materials[1].materials}
-  setMaterial={setKitchen}
-/>}
-
-{kitchen && <img
-  src={kitchen}
-  alt="Kitchen"
-  className="absolute top-0 left-0"
-/>} */}
 

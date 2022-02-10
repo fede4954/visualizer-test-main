@@ -1,10 +1,10 @@
 const Touch = (props) => {
-    const { menu, setMenu } = props
+    const { menu, setMenu, position } = props
 
     return <button
         type="button"
         onClick={() => setMenu(!menu)}
-        className="absolute left-[35%] bottom-[35%] md:bottom-[30%] lg:bottom-[5%]"
+        className={position}
     >
         <img
             src="fingerprint.png"
