@@ -9,8 +9,8 @@ const Home = () => {
   const [materials, setMaterials] = useState('')
   const [floor, setFloor] = useState('')
   const [kitchen, setKitchen] = useState('')
-  const [floorMenu, setFloorMenu] = useState(false)
-  const [kitchenMenu, setKitchenMenu] = useState(false)
+  const [floorSelector, setFloorSelector] = useState(false)
+  const [kitchenSelector, setKitchenSelector] = useState(false)
   const [touch, setTouch] = useState(true)
   const [loading, setLoading] = useState(true)
 
@@ -24,8 +24,8 @@ const Home = () => {
   const checkMenus = () => {
     if (!touch) {
       setTouch(true)
-      setFloorMenu(false)
-      setKitchenMenu(false)
+      setFloorSelector(false)
+      setKitchenSelector(false)
     }
   }
 
@@ -41,8 +41,8 @@ const Home = () => {
   }, [])
 
 
-  return <>
-    {!loading && <div className="relative h-screen w-screen bg-slate-300">
+  return <div className="container">
+    {!loading && <>
       <img
         src="https://firebasestorage.googleapis.com/v0/b/porcelanosa-partners-spaces.appspot.com/o/projects%2FdorptVQTHsbkYC60NSlt%2Fscenes%2F1567170849457-base?alt=media&token=cf8bcee2-bf89-4fd9-8bfd-9d4462348844"
         alt="Base image"
@@ -65,30 +65,32 @@ const Home = () => {
       />}
 
       {touch && <Touch
-        menu={floorMenu}
-        setMenu={setFloorMenu}
+        menu={floorSelector}
+        setMenu={setFloorSelector}
         position={"absolute left-[25%] bottom-[35%] md:bottom-[27.5%] lg:left-[35%] lg:bottom-[5%]"}
         setTouch={setTouch}
       />}
 
-      {floorMenu && <Selector
-        materials={materials[0].materials}
-        setMaterial={setFloor}
-      />}
 
       {touch && <Touch
-        menu={kitchenMenu}
-        setMenu={setKitchenMenu}
+        menu={kitchenSelector}
+        setMenu={setKitchenSelector}
         position={"absolute left-[75%] bottom-[55%] lg:left-[70%] lg:bottom-[60%]"}
         setTouch={setTouch}
       />}
 
-      {kitchenMenu && <Selector
+      {floorSelector && <Selector
+        materials={materials[0].materials}
+        setMaterial={setFloor}
+      />}
+
+      {kitchenSelector && <Selector
         materials={materials[1].materials}
         setMaterial={setKitchen}
       />}
-    </div>}
-  </>
+
+    </>}
+  </div>
 }
 
 export default Home
